@@ -1,8 +1,22 @@
 {
   "version": 2,
-  "dgSpecHash": "GM+LPYatiwShCRBSxekvOowB33MKJfA0r80XuHeKwfND2ThL7JyBGZpBUdEuzd2qOIxSqpUqxV2HOIROhYz3fQ==",
+  "dgSpecHash": "QqRni0VLBTtg69OZkgyR8DeF3faOZlTZut1GHYPGXzT+IZhYnTJrZsxTJmolhOt5r5Egk6IF2bHsCXOEnkwyow==",
   "success": true,
   "projectFilePath": "C:\\Users\\vivian.zitek\\Programming\\cSharp\\_CS1400-Labs\\Lab2-PlutoZitek-FurElise\\Lab2-PlutoZitek-FurElise.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\vivian.zitek\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
+    "C:\\Users\\vivian.zitek\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
+    "C:\\Users\\vivian.zitek\\.nuget\\packages\\microsoft.win32.systemevents\\7.0.0\\microsoft.win32.systemevents.7.0.0.nupkg.sha512",
+    "C:\\Users\\vivian.zitek\\.nuget\\packages\\naudio\\2.1.0\\naudio.2.1.0.nupkg.sha512",
+    "C:\\Users\\vivian.zitek\\.nuget\\packages\\naudio.asio\\2.1.0\\naudio.asio.2.1.0.nupkg.sha512",
+    "C:\\Users\\vivian.zitek\\.nuget\\packages\\naudio.core\\2.1.0\\naudio.core.2.1.0.nupkg.sha512",
+    "C:\\Users\\vivian.zitek\\.nuget\\packages\\naudio.midi\\2.1.0\\naudio.midi.2.1.0.nupkg.sha512",
+    "C:\\Users\\vivian.zitek\\.nuget\\packages\\naudio.wasapi\\2.1.0\\naudio.wasapi.2.1.0.nupkg.sha512",
+    "C:\\Users\\vivian.zitek\\.nuget\\packages\\naudio.winmm\\2.1.0\\naudio.winmm.2.1.0.nupkg.sha512",
+    "C:\\Users\\vivian.zitek\\.nuget\\packages\\system.drawing.common\\7.0.0\\system.drawing.common.7.0.0.nupkg.sha512",
+    "C:\\Users\\vivian.zitek\\.nuget\\packages\\system.security.accesscontrol\\4.7.0\\system.security.accesscontrol.4.7.0.nupkg.sha512",
+    "C:\\Users\\vivian.zitek\\.nuget\\packages\\system.security.principal.windows\\4.7.0\\system.security.principal.windows.4.7.0.nupkg.sha512",
+    "C:\\Users\\vivian.zitek\\.nuget\\packages\\system.windows.extensions\\7.0.0\\system.windows.extensions.7.0.0.nupkg.sha512"
+  ],
   "logs": []
 }
