@@ -4,8 +4,11 @@ public class Tone {
 	Natural (~), Sharp (#), Flat (b)
 	*/
 	private string _noteLetter = "";
-	private int _frequency = 0;
-	private static int _rootFrequency = 440;
+	private double _frequency = 0;
+	const int RootFrequency = 55; // Using the frequency of A1 to allow easy multiplication by octave
+	private int _octave = 0;
+	const int OctaveMin = 1;
+	const int OctaveMax = 8;
 	protected Dictionary<string, int> NoteValues = new Dictionary<string, int> {
 		{"C~",-9},
 		{"C#",-8},
@@ -26,15 +29,9 @@ public class Tone {
 		{"B~",2},
 	};
 
-	public Tone() {
+	public Tone(string note, int octave) {
 
-
-	}
-
-	public int Frequency {
-
-		get {return _frequency;}
-
+		
 	}
 
 	public string NoteLetter {
@@ -44,6 +41,23 @@ public class Tone {
 			string[] notes = NoteValues.Keys.ToArray();
 			if (notes.Contains(value)) {_noteLetter = value;}
 			else {Console.WriteLine($"{value} is an invalid note.");}
+		}
+	}
+
+	public double Frequency {
+
+		get {return _frequency;}
+		set {_frequency = value;}
+
+	}
+
+	public int Octave {
+
+		get {return _octave;}
+		set {
+
+			if (value >= OctaveMin && value <= OctaveMax) {_octave = value;}
+			else {Console.WriteLine($"Octave {value} is out of the range [{OctaveMin} - {OctaveMax}].");}
 		}
 	}
 }
