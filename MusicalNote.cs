@@ -6,14 +6,14 @@ public class MusicalNote {
 	}
 
 
-	protected enum Durations {
+// 	protected enum Durations {
 
-		Whole
-		Half
-		Quarter
-		Eigth
-		Sixteenth
-		ThirtySecondth
-	}
+// 		Whole
+// 		Half
+// 		Quarter
+// 		Eigth
+// 		Sixteenth
+// 		ThirtySecondth
+// 	}
 
 }
