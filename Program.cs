@@ -5,19 +5,19 @@ var sineOne = new SignalGenerator() {
 	Gain = 0.2, 
 	Frequency = 220,
 	Type = SignalGeneratorType.Sin}
-	.Take(TimeSpan.FromSeconds(2));
+	.Take(TimeSpan.FromSeconds(0.02666));
 
 var sineTwo = new SignalGenerator() { 
 	Gain = 0.2, 
 	Frequency = 330,
 	Type = SignalGeneratorType.Sin}
-	.Take(TimeSpan.FromSeconds(2));
+	.Take(TimeSpan.FromSeconds(0.02666));
 
 var sineThree = new SignalGenerator() { 
 	Gain = 0.2, 
 	Frequency = 262,
 	Type = SignalGeneratorType.Sin}
-	.Take(TimeSpan.FromSeconds(2));
+	.Take(TimeSpan.FromSeconds(0.02666));
 
 using (var woA = new WaveOutEvent())
 using (var woB = new WaveOutEvent())
