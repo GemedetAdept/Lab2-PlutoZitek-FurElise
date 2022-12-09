@@ -1,32 +1,37 @@
 ﻿using NAudio.Wave;
 using NAudio.Wave.SampleProviders;
 
-List<double> noteDurations = new List<double>()
-	{1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
+// 3/8 time @ 135 tempo
+MusicalNote.SetTimingProperties(3, 8, 135);
+
+List<double> noteValues = new List<double>()
+	{1, 1,  1,1,1,  1, 1,  1,1,1};
 List<string> noteNames = new List<string>()
-	{"G~", "G~", "A~", "E~", "C~", "G~", "G~", "A~", "E~", "C~",};
+	{"G~", "G~",  "A~","E~","C~",  "G~", "G~",  "A~","E~","C~",};
 List<int> noteOctaves = new List<int>()
-	{4, 4, 3, 4, 4, 3, 3, 3, 4, 4,};
+	{4, 4,  3,4,4,  3, 3,  3,4,4,};
 List<(int, int)> chordIndices = new List<(int, int)>()
 	{(2, 4), (7, 9)};
 
 List<MusicalNote> notesList = new List<MusicalNote>();
-for (int i=0; i < noteDurations.Count; i++) {
+for (int i=0; i < noteValues.Count; i++) {
 	MusicalNote newNote = new MusicalNote(
-		noteDurations[i],
+		noteValues[i],
 		noteNames[i],
 		noteOctaves[i]
 	);
 
-	Console.WriteLine($"{newNote.NoteLetter}{newNote.Octave}, {newNote.Frequency}");
-
 	notesList.Add(newNote);
+}
+
+foreach (MusicalNote note in notesList) {
+	Console.WriteLine(note.Duration);
 }
 
 var noteSignals = notesList.Select( x =>
 	new SignalGenerator() { 
 		Gain = 0.1, 
-		Frequency = x.Frequency, // These are doubles!!!
+		Frequency = x.Frequency,
 		Type = SignalGeneratorType.Sin}
 		.Take(TimeSpan.FromSeconds(x.Duration))
 ).ToList();
@@ -55,7 +60,7 @@ for (int noteIndex=0; noteIndex < notesList.Count; noteIndex++) {
 				useWOE[i].Play();
 			}
 			while (useWOE[0].PlaybackState == PlaybackState.Playing) {
-				Thread.Sleep((int)((noteDurations[0]*Math.Pow(10,3))));
+				Thread.Sleep((int)((noteValues[0]*Math.Pow(10,3))));
 				break;
 			}
 		}
@@ -69,11 +74,11 @@ for (int noteIndex=0; noteIndex < notesList.Count; noteIndex++) {
 			useWOE.Init(noteSignals[noteIndex]);
 			useWOE.Play();
 			while (useWOE.PlaybackState == PlaybackState.Playing) {
-				Thread.Sleep((int)(noteDurations[noteIndex]*Math.Pow(10,3)));
+				Thread.Sleep((int)(noteValues[noteIndex]*Math.Pow(10,3)));
 				break;
 			}
 		}
 	}
 }}
 
-playNotes();
+// playNotes();

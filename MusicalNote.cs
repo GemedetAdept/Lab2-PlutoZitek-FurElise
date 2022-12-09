@@ -7,29 +7,18 @@ public class MusicalNote {
 	const int RootFrequency = 55;
 	const int OctaveMin = 1;
 	const int OctaveMax = 8;
-	protected Dictionary<string, int> NoteValues = new Dictionary<string, int> {
-		{"C~",-9},
-		{"C#",-8},
-		{"Db",-8},
-		{"D~",-7},
-		{"D#",-6},
-		{"Eb",-6},
-		{"E~",-5},
-		{"F~",-4},
-		{"F#",-3},
-		{"Gb",-3},
-		{"G~",-2},
-		{"G#",-1},
-		{"Ab",-1},
-		{"A~",0},
-		{"A#",1},
-		{"Bb",1},
-		{"B~",2},
-	};
+
+	public static double wholeNoteDuration;
+
+	public static void SetTimingProperties(double sigTop, double sigBottom, double tempo) {
+
+		double secondsPerBeat = (1/tempo)*60;
+		wholeNoteDuration = secondsPerBeat*8;
+	}
 
 	public MusicalNote(double duration, string note, int octave) {
 
-		Duration = duration;
+		Duration = duration*wholeNoteDuration;
 		NoteLetter = note;
 		Octave = octave;
 
@@ -66,15 +55,25 @@ public class MusicalNote {
 		set {_frequency = value;}
 	}
 
-
-// 	protected enum Durations {
-
-// 		Whole
-// 		Half
-// 		Quarter
-// 		Eigth
-// 		Sixteenth
-// 		ThirtySecondth
-// 	}
+	protected Dictionary<string, int> NoteValues = 
+	new Dictionary<string, int> {
+		{"C~",-9},
+		{"C#",-8},
+		{"Db",-8},
+		{"D~",-7},
+		{"D#",-6},
+		{"Eb",-6},
+		{"E~",-5},
+		{"F~",-4},
+		{"F#",-3},
+		{"Gb",-3},
+		{"G~",-2},
+		{"G#",-1},
+		{"Ab",-1},
+		{"A~",0},
+		{"A#",1},
+		{"Bb",1},
+		{"B~",2},
+	};
 
 }
