@@ -32,6 +32,7 @@ var noteSignals = notesList.Select( x =>
 ).ToList();
 
 void playNotes() {
+
 int chordCount = chordIndices.Count;
 int nextChord = 0;
 for (int noteIndex=0; noteIndex < notesList.Count; noteIndex++) {
@@ -44,7 +45,6 @@ for (int noteIndex=0; noteIndex < notesList.Count; noteIndex++) {
 
 		var chordSignals = noteSignals.Skip(start).Take(range).Select(x => x).ToList();
 		var useWOE = chordSignals.Select(x => new WaveOutEvent()).ToList();
-		// values1NotAtIndexes = values1.Where((m, index) => !indexes.Contains(index)).ToList();
 	
 		using (useWOE.Select(x => x) as IDisposable) {
 	
@@ -55,9 +55,8 @@ for (int noteIndex=0; noteIndex < notesList.Count; noteIndex++) {
 				useWOE[i].Play();
 			}
 			while (useWOE[0].PlaybackState == PlaybackState.Playing) {
-				Thread.Sleep(100);
-				// Thread.Sleep((int)(noteDurations[0]*Math.Pow(10,3)));
-
+				Thread.Sleep((int)((noteDurations[0]*Math.Pow(10,3))));
+				break;
 			}
 		}
 
@@ -70,8 +69,8 @@ for (int noteIndex=0; noteIndex < notesList.Count; noteIndex++) {
 			useWOE.Init(noteSignals[noteIndex]);
 			useWOE.Play();
 			while (useWOE.PlaybackState == PlaybackState.Playing) {
-				Thread.Sleep(500);
-				// Thread.Sleep((int)(noteDurations[noteIndex]*Math.Pow(10,3)));
+				Thread.Sleep((int)(noteDurations[noteIndex]*Math.Pow(10,3)));
+				break;
 			}
 		}
 	}
