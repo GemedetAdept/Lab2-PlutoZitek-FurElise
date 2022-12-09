@@ -2,19 +2,45 @@
 using NAudio.Wave.SampleProviders;
 
 // 3/8 time @ 135 tempo
-MusicalNote.SetTimingProperties(3, 8, 135);
+int tempo = (135);
+Console.WriteLine(tempo);
+MusicalNote.SetTimingProperties(3, 8, tempo);
 
-List<double> noteValues = new List<double>()
-	{1, 1,  1,1,1,  1, 1,  1,1,1};
-List<string> noteNames = new List<string>()
-	{"G~", "G~",  "A~","E~","C~",  "G~", "G~",  "A~","E~","C~",};
-List<int> noteOctaves = new List<int>()
-	{4, 4,  3,4,4,  3, 3,  3,4,4,};
-List<(int, int)> chordIndices = new List<(int, int)>()
-	{(2, 4), (7, 9)};
+// Whl, Hlf, Qrt, Egt, Sxt, Ths
+// Whole, Half, Quarter, Eighth, Sixteenth, Thirty-Secondth
+List<string> noteValues = new List<string>() {
+	"Sxt", "Sxt", 
+	"Sxt", "Sxt", "Sxt", "Sxt", "Sxt", "Sxt", 
+	"Egt", "Sxt", "Sxt", "Sxt", "Sxt", 
+	"Egt", "Sxt", "Sxt", "Sxt", "Sxt", 
+	"Egt", "Sxt", "Sxt", "Sxt", "Sxt", 
+	"Sxt", "Sxt", "Sxt", "Sxt", "Sxt", "Sxt", 
+	"Egt", "Sxt", "Sxt", "Sxt", "Sxt", 
+};
+
+List<string> noteNames = new List<string>() {
+	"C#", "B#", 
+	"C#", "B#", "C#", "G~", "B~", "A~", 
+	"F~", "%%", "A~", "C~", "F~", 
+	"G~", "%%", "C~", "E#", "G~", 
+	"A~", "%%", "C~", "C#", "B#", 
+	"C#", "B#", "C#", "G~", "B~", "A~", 
+	"F~", "%%", "A~", "C~", "F~",
+};
+List<int> noteOctaves = new List<int>() {
+	4, 4, 
+	4, 4, 4, 3, 4, 4, 
+	3, 1, 3, 3, 3, 
+	3, 1, 3, 3, 3, 
+	4, 1, 3, 4, 4, 
+	4, 4, 4, 3, 4, 4, 
+	4, 1, 3, 3, 4, 
+};
+List<(int, int)> chordIndices = new List<(int, int)>(){};
 
 List<MusicalNote> notesList = new List<MusicalNote>();
 for (int i=0; i < noteValues.Count; i++) {
+
 	MusicalNote newNote = new MusicalNote(
 		noteValues[i],
 		noteNames[i],
@@ -25,7 +51,8 @@ for (int i=0; i < noteValues.Count; i++) {
 }
 
 foreach (MusicalNote note in notesList) {
-	Console.WriteLine(note.Duration);
+	if (note.NoteLetter == "%%") {note.Frequency = 32;}
+	Console.WriteLine($"{note.NoteLetter} {note.Octave}: {note.Duration}, {note.Frequency}");
 }
 
 var noteSignals = notesList.Select( x =>
@@ -60,7 +87,7 @@ for (int noteIndex=0; noteIndex < notesList.Count; noteIndex++) {
 				useWOE[i].Play();
 			}
 			while (useWOE[0].PlaybackState == PlaybackState.Playing) {
-				Thread.Sleep((int)((noteValues[0]*Math.Pow(10,3))));
+				Thread.Sleep((int)((notesList[0].Duration)*1000));
 				break;
 			}
 		}
@@ -74,11 +101,11 @@ for (int noteIndex=0; noteIndex < notesList.Count; noteIndex++) {
 			useWOE.Init(noteSignals[noteIndex]);
 			useWOE.Play();
 			while (useWOE.PlaybackState == PlaybackState.Playing) {
-				Thread.Sleep((int)(noteValues[noteIndex]*Math.Pow(10,3)));
+				Thread.Sleep((int)((notesList[noteIndex].Duration)*1000));
 				break;
 			}
 		}
 	}
 }}
 
-// playNotes();
+playNotes();
