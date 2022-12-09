@@ -23,7 +23,7 @@ public class MusicalNote {
 		NoteLetter = note;
 		Octave = octave;
 
-		int halfSteps = NoteValues[NoteLetter];
+		int halfSteps = NoteValues[NoteLetter]+4;
 		double twelthRootofTwo = Math.Pow(2, (1.0/12.0));
 		Frequency = (RootFrequency*(Math.Pow(twelthRootofTwo, halfSteps)))*(Octave*2);
 	

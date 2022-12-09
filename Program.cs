@@ -9,34 +9,27 @@ MusicalNote.SetTimingProperties(3, 8, tempo);
 // Whl, Hlf, Qrt, Egt, Sxt, Ths
 // Whole, Half, Quarter, Eighth, Sixteenth, Thirty-Secondth
 List<string> noteValues = new List<string>() {
-	"Sxt", "Sxt", 
-	"Sxt", "Sxt", "Sxt", "Sxt", "Sxt", "Sxt", 
-	"Egt", "Sxt", "Sxt", "Sxt", "Sxt", 
-	"Egt", "Sxt", "Sxt", "Sxt", "Sxt", 
-	"Egt", "Sxt", "Sxt", "Sxt", "Sxt", 
-	"Sxt", "Sxt", "Sxt", "Sxt", "Sxt", "Sxt", 
-	"Egt", "Sxt", "Sxt", "Sxt", "Sxt", 
+"Sxt", "Sxt", "Sxt", "Sxt", "Sxt", "Sxt", "Sxt", "Sxt", "Sxt","Sxt", "Sxt", "Sxt", "Sxt", "Sxt", 
+"Sxt", "Sxt","Sxt", "Sxt", "Sxt", "Sxt", "Sxt", "Sxt", "Sxt","Sxt", "Sxt", "Sxt", "Sxt", "Sxt", "Sxt", 
+"Sxt", "Sxt", "Sxt", "Sxt", "Sxt", "Sxt", "Sxt","Sxt", "Sxt", "Sxt", "Sxt", "Sxt", "Sxt", "Sxt","Sxt", 
+"Sxt", "Sxt", "Sxt", "Sxt", "Sxt", "Sxt","Sxt", "Sxt", "Sxt", "Egt", "Sxt", "Sxt", "Sxt", 
 };
 
 List<string> noteNames = new List<string>() {
-	"C#", "B#", 
-	"C#", "B#", "C#", "G~", "B~", "A~", 
-	"F~", "%%", "A~", "C~", "F~", 
-	"G~", "%%", "C~", "E#", "G~", 
-	"A~", "%%", "C~", "C#", "B#", 
-	"C#", "B#", "C#", "G~", "B~", "A~", 
-	"F~", "%%", "A~", "C~", "F~",
+"C~", "B~", "C~", "B~", "C~", "G~", "Bb", "Ab", "F~","F~", "C~", "F~", "Ab", "C~", 
+"F~", "G~","C~", "C~", "G~", "C~", "G~", "G~", "Ab","F~", "C~", "F~", "C~", "C~", "B~", 
+"C~", "B~", "C~", "G~", "Bb", "Ab", "F~","F~", "C~", "F~", "Ab", "C~", "F~", "G~","C~", 
+"C~", "G~", "C~", "Ab", "G~", "F~","F~", "C~", "F~", "%%", "G~", "Ab", "B~", 
 };
 List<int> noteOctaves = new List<int>() {
-	4, 4, 
-	4, 4, 4, 3, 4, 4, 
-	3, 1, 3, 3, 3, 
-	3, 1, 3, 3, 3, 
-	4, 1, 3, 4, 4, 
-	4, 4, 4, 3, 4, 4, 
-	4, 1, 3, 3, 4, 
+4, 4, 4, 4, 4, 3, 4, 4, 3,1, 2, 2, 3, 3, 
+3, 3,1, 2, 2, 3, 3, 3, 4,1, 2, 2, 3, 4, 4, 
+4, 4, 4, 3, 4, 4, 3,1, 2, 2, 3, 3, 3, 3,1, 
+2, 2, 3, 4, 3, 3,1, 2, 2, 1, 3, 4, 4, 
 };
-List<(int, int)> chordIndices = new List<(int, int)>(){};
+List<(int, int)> chordIndices = new List<(int, int)>(){
+	(9,10), (16,17), (23,24), (36,37), (43,44), (50,51),
+};
 
 List<MusicalNote> notesList = new List<MusicalNote>();
 for (int i=0; i < noteValues.Count; i++) {
@@ -51,7 +44,7 @@ for (int i=0; i < noteValues.Count; i++) {
 }
 
 foreach (MusicalNote note in notesList) {
-	if (note.NoteLetter == "%%") {note.Frequency = 32;}
+	if (note.NoteLetter == "%%") {note.Frequency = 0;}
 	Console.WriteLine($"{note.NoteLetter} {note.Octave}: {note.Duration}, {note.Frequency}");
 }
 
