@@ -1,8 +1,8 @@
 ﻿using NAudio.Wave;
 using NAudio.Wave.SampleProviders;
 
-List<int> noteDurations = new List<int>()
-	{2, 2, 2};
+List<double> noteDurations = new List<double>()
+	{0.2, 0.05, 0.2};
 List<string> noteNames = new List<string>()
 	{"A~", "E~", "C~"};
 List<int> noteOctaves = new List<int>()
@@ -30,18 +30,14 @@ var noteSignals = notesList.Select( x =>
 ).ToList();
 
 void playNotes() {
-	using (var woA = new WaveOutEvent())
-	using (var woB = new WaveOutEvent())
-	using (var woC = new WaveOutEvent())
-	{
-		woA.Init(noteSignals[0]);
-		woB.Init(noteSignals[1]);
-		woC.Init(noteSignals[2]);
-		woA.Play();
-		woB.Play();
-		woC.Play();
-		while (woA.PlaybackState == PlaybackState.Playing && woB.PlaybackState == PlaybackState.Playing) {
-			Thread.Sleep(500);
+	for (int i=0; i < noteSignals.Count; i++) {
+		using (var outputNote = new WaveOutEvent()) {
+			outputNote.Init(noteSignals[i]);
+			outputNote.Play();
+
+			while (outputNote.PlaybackState == PlaybackState.Playing) {
+				Thread.Sleep((int)(noteDurations[i]*Math.Pow(10,3)));
+			}
 		}
 	}
 }

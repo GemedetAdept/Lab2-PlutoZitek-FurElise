@@ -1,7 +1,7 @@
 public class MusicalNote {
 
-	private int _duration;
-	private string _noteLetter;
+	private double _duration;
+	private string _noteLetter = "";
 	private int _octave;
 	private double _frequency;
 	const int RootFrequency = 55;
@@ -27,7 +27,7 @@ public class MusicalNote {
 		{"B~",2},
 	};
 
-	public MusicalNote(int duration, string note, int octave) {
+	public MusicalNote(double duration, string note, int octave) {
 
 		Duration = duration;
 		NoteLetter = note;
@@ -38,7 +38,7 @@ public class MusicalNote {
 		Frequency = (RootFrequency*(Math.Pow(twelthRootofTwo, halfSteps)))*(Octave*2);
 	}
 
-	public int Duration {
+	public double Duration {
 
 		get {return _duration;}
 		set {_duration = value;}
